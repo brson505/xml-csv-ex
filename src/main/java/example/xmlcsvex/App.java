@@ -74,10 +74,16 @@ public class App
         
         String xml = byteArrayOutputStream.toString();
         System.out.println("xml:" +  xml);
-        
-        Persons readedPersons = xmlMapper.readValue(xml, Persons.class);
-        
-        for(Person person : readedPersons.getPerson()) {
+
+		Persons readedPersons = xmlMapper.readValue(xml, Persons.class);
+		for(Person person : readedPersons.getPerson()) {
+			printPerson(person);
+		}
+
+		String xml2 = "<Persons><person><id>1</id><phoneNumbers>123-456</phoneNumbers><phoneNumbers>456-789</phoneNumbers></person><person><id>2</id><name>아무개</name><phoneNumbers>223-456</phoneNumbers><phoneNumbers>226-789</phoneNumbers></person></Persons>";
+		System.out.println("xml2:" +  xml2);
+        Persons readedPersons2 = xmlMapper.readValue(xml2, Persons.class);
+        for(Person person : readedPersons2.getPerson()) {
     		printPerson(person);
     	}
     }
