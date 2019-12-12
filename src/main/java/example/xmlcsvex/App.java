@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -33,6 +36,7 @@ public class App
     	List<Person> persons = Arrays.asList(person1, person2);
     	
     	CsvMapper csvMapper = new CsvMapper();
+		csvMapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN,true);
     	
     	CsvSchema csvSchema =  CsvSchema.builder()
     			.addColumn("id")
@@ -68,7 +72,7 @@ public class App
     	persons.setPerson(Arrays.asList(person1, person2));
     	
     	
-    	XmlMapper xmlMapper = new XmlMapper();        
+    	XmlMapper xmlMapper = new XmlMapper();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         xmlMapper.writeValue(byteArrayOutputStream, persons);
         
@@ -80,8 +84,9 @@ public class App
 			printPerson(person);
 		}
 
-		String xml2 = "<Persons><person><id>1</id><phoneNumbers>123-456</phoneNumbers><phoneNumbers>456-789</phoneNumbers></person><person><id>2</id><name>아무개</name><phoneNumbers>223-456</phoneNumbers><phoneNumbers>226-789</phoneNumbers></person></Persons>";
+		String xml2 = "<Persons><person attr1=\"b\"><b>a</b><id>1</id><phoneNumbers>123-456</phoneNumbers><phoneNumbers>456-789</phoneNumbers></person><person><id>2</id><name>아무개</name><phoneNumbers>223-456</phoneNumbers><phoneNumbers>226-789</phoneNumbers></person></Persons>";
 		System.out.println("xml2:" +  xml2);
+		//xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         Persons readedPersons2 = xmlMapper.readValue(xml2, Persons.class);
         for(Person person : readedPersons2.getPerson()) {
     		printPerson(person);
@@ -92,6 +97,7 @@ public class App
     	System.out.println("id: " +  person.getId());
     	System.out.println("name: " +  person.getName());
         System.out.println("phoneNumbers: " +  person.getPhoneNumbers());
+		System.out.println("attr1: " +  person.getAttr1());
     }
 
 	private static Person testPerson1() {
