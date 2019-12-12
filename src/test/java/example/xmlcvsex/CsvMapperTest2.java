@@ -18,6 +18,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class CsvMapperTest2 {
+
+
+    //CsvSchema 생성할때 별도의 분리정보(label) 포함하여 생성하고
+    //파싱후 분리정보를 이용하여 분리
     @Test
     public void testMap() throws IOException {
 

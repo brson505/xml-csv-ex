@@ -16,6 +16,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class CsvMapperTest3 {
+
+    //CsvSchema 생성할때 column name에 분리정보를 prefix로 포함하고
+    //파싱 후 map.key에서 prefix를 정보를 이용하여 분리
     @Test
     public void testMap() throws Exception {
 

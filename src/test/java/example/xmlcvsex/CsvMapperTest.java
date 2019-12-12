@@ -16,6 +16,8 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class CsvMapperTest {
+
+    //중복은 있지만 가장 간단한 분리
     @Test
     public void testMap() throws IOException {
 
