@@ -1,4 +1,4 @@
-package example.xmlcvsex;
+package example.xmlcsvex;
 
 
 import com.fasterxml.jackson.core.JsonGenerator;
