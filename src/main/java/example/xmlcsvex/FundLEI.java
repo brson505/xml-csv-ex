@@ -3,10 +3,7 @@ package example.xmlcsvex;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 
-import javax.xml.bind.annotation.XmlAttribute;
-
 public class FundLEI {
-
     @JacksonXmlProperty(isAttribute = true)
     private int id;
 
