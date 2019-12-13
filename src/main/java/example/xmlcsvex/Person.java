@@ -2,6 +2,7 @@ package example.xmlcsvex;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -13,6 +14,7 @@ public class Person {
 	@JacksonXmlElementWrapper(useWrapping = false)
 	private List<String> phoneNumbers = new ArrayList<String>();
 	private String attr1;
+	private Apple apple;
 		
 	public int getId() {
 		return id;
@@ -39,5 +41,24 @@ public class Person {
 
 	public void setAttr1(String attr1) {
 		this.attr1 = attr1;
+	}
+
+	public Apple getApple() {
+		return apple;
+	}
+
+	public void setApple(Apple apple) {
+		this.apple = apple;
+	}
+
+	@Override
+	public String toString() {
+		return "Person{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", phoneNumbers=" + phoneNumbers +
+				", attr1='" + attr1 + '\'' +
+				", apple=" + apple +
+				'}';
 	}
 }
