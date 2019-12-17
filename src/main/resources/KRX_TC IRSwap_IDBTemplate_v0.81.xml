@@ -551,7 +551,7 @@
           <fx2007Indicator>(FX2007 보고대상상품)</fx2007Indicator>
           <exoticProductNmae>(비정형파생결합상품명)</exoticProductNmae>
           <accountClassification>(계정구분코드)</accountClassification>
-          <creditProductName>(신용파생상품명)</creditProductName>
+          <creditProductName>(신용파생상품명)</creditProductName>F
           <referenceEntityCharacters maxOccurs="5">(준거실체 성격코드)</referenceEntityCharacters>
           <countryReferenceEntities maxOccurs="5">(준거실체 소속국가코드)</countryReferenceEntities>
         </BOKReplacement>
