@@ -2,7 +2,7 @@ package example.xmlcsvex;
 
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import example.xmlcsvex.spec.KtcRequestConfirmation;
+import example.xmlcsvex.spec.ktcRequestConfirmation.KtcRequestConfirmation;
 import org.junit.Test;
 
 import java.io.InputStream;

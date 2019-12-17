@@ -1,0 +1,37 @@
+
+[{
+  "index": 0,
+  "name" : "id",
+  "dbColumns" :
+  [
+    {
+      "table": "table1"
+    },
+    {
+      "table": "table2"
+    },
+    {
+      "table": "table3.0"
+    },
+    {
+      "table": "table3.1"
+    }
+  ]
+},
+{
+"index": 1,
+"name": "name",
+"dbColumns" :
+[
+{
+"table": "table1"
+},
+{
+"table": "table2"
+},
+{
+"table": "table3"
+}
+]
+}
+]
