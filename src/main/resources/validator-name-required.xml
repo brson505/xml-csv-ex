@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+        "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.4.0//EN"
+        "http://commons.apache.org/dtds/validator_1_4_0.dtd">
+
+<form-validation>
+    <global>
+        <validator name="int2"
+                   classname="org.apache.commons.validator.TestTypeValidator"
+                   method="validateInt"
+                   methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                   msg="errors.int"/>
+
+        <validator name="required2"
+                   classname="example.xmlcsvex.RequiredNameTest"
+                   method="validateRequired"
+                   methodParams="java.lang.Object,org.apache.commons.validator.Field"
+                   msg="errors.required"/>
+    </global>
+    <formset>
+        <form name="nameForm">
+            <field property="firstName" depends="required">
+                <arg key="nameForm.firstname.displayname"/>
+            </field>
+            <field property="lastName" depends="required">
+                <arg key="nameForm.lastname.displayname"/>
+            </field>
+        </form>
+    </formset>
+</form-validation>
