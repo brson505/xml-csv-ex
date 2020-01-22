@@ -5,7 +5,19 @@
   <groupId>example</groupId>
   <artifactId>xml-csv-ex</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <packaging>jar</packaging>
 
   <name>xml-cvs-ex</name>
   <url>http://maven.apache.org</url>
@@ -77,5 +89,10 @@
           <version>2.2.6</version>
       </dependency>
       <!-- hibernate validator end -->
+      <dependency>
+          <groupId>jaxen</groupId>
+          <artifactId>jaxen</artifactId>
+          <version>1.2.0</version>
+      </dependency>
   </dependencies>
 </project>

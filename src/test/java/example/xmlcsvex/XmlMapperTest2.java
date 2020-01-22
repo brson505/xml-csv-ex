@@ -33,4 +33,25 @@ public class XmlMapperTest2 {
         assertEquals("unbounded", ktcRequestConfirmation.dataDocuments.get(0).trade.IRSwap.swapStream2.common.terminationDate.dateAdjustments.businessCenters.get(0).maxOccurs);
 
     }
+
+    @Test
+    public void testXml3() throws Exception {
+        XmlMapper xmlMapper = new XmlMapper();
+        InputStream in = getClass()
+                .getClassLoader().getResourceAsStream("KRX_TC IRSwap_IDBTemplate_v0.81.xml");
+
+        Map map = xmlMapper.readValue(in, Map.class);
+        System.out.println(map);
+    }
+
+    @Test
+    public void testXml4() throws Exception {
+        XmlMapper xmlMapper = new XmlMapper();
+        InputStream in = getClass()
+                .getClassLoader().getResourceAsStream("test.xml");
+
+
+    }
+
+
 }

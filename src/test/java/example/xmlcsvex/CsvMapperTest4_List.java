@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvParser;
 import example.xmlcsvex.csv.CsvToDbSchema;
-import example.xmlcsvex.csv.Parser;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -30,10 +29,10 @@ public class CsvMapperTest4_List {
         List<String[]> all = it.readAll();
 
         CsvToDbSchema schema = new CsvToDbSchema();
-        schema.addColumn(0, "id").addDb("table1", "table3-0","table3-1");
-        schema.addColumn(1, "name").addDb("table1", "table2");
-        schema.addColumn(2, "phone1").addDb("table2", "table3-0.phone");
-        schema.addColumn(3, "phone2").addDb("table2", "table3-1.phone");
+        schema.addColumn(0, "id").addTableColumn("table1", "table3-0","table3-1");
+        schema.addColumn(1, "name").addTableColumn("table1", "table2");
+        schema.addColumn(2, "phone1").addTableColumn("table2", "table3-0.phone");
+        schema.addColumn(3, "phone2").addTableColumn("table2", "table3-1.phone");
 
         for(String[] columns : all){
             for(String column : columns){
@@ -42,10 +41,9 @@ public class CsvMapperTest4_List {
             System.out.println();
         }
 
-        Parser parser = new Parser(schema);
         ArrayList<Map<String, Map<String, String>>>  dataSetMapList = new ArrayList<Map<String, Map<String, String>>>();
         for (String[] columns : all){
-            Map<String, Map<String, String>> p = parser.parse(columns);
+            Map<String, Map<String, String>> p = schema.parse(columns);
             System.out.println(p);
             dataSetMapList.add(p);
         }

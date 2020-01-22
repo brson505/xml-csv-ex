@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Column {
     private int index;
     private String name;
-    private ArrayList<Db> dbs = new ArrayList<Db>();
+    private ArrayList<TableColumn> tableColumns = new ArrayList<TableColumn>();
 
     public Column(int index){
         this.index = index;
@@ -16,23 +16,23 @@ public class Column {
         this.name = name;
     }
 
-    public Column addDb(String tableAndColumnName){
-        String[] a = tableAndColumnName.split("\\.");
+    public Column addTableColumn(String tableColumn){
+        String[] a = tableColumn.split("\\.");
         if(a.length==1){
-            dbs.add(new Db(a[0], name));
+            tableColumns.add(TableColumn.create(a[0], name));
         }
         else if(a.length==2){
-            dbs.add(new Db(a[0], a[1]));
+            tableColumns.add(TableColumn.create(a[0], a[1]));
         }
         else {
-            throw new IllegalArgumentException(tableAndColumnName);
+            throw new IllegalArgumentException(tableColumn);
         }
         return this;
     }
 
-    public Column addDb(String...tableAndColumnNames){
-        for (String tableAndColumnName : tableAndColumnNames){
-            addDb(tableAndColumnName);
+    public Column addTableColumn(String...tableColumns){
+        for (String tableAndColumnName : tableColumns){
+            addTableColumn(tableAndColumnName);
         }
         return this;
     }
@@ -45,24 +45,8 @@ public class Column {
         return name;
     }
 
-    public ArrayList<Db> getDbs() {
-        return dbs;
+    public ArrayList<TableColumn> getTableColumns() {
+        return tableColumns;
     }
 
-    protected class Db {
-        String table;
-        String column;
-        protected Db(String table, String column) {
-            this.table = table;
-            this.column = column;
-        }
-
-        public String getTable() {
-            return table;
-        }
-
-        public String getColumn() {
-            return column;
-        }
-    }
 }
