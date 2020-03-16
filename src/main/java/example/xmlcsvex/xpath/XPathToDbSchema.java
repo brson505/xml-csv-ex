@@ -36,22 +36,31 @@ public class XPathToDbSchema {
     }
 
     public Map<String, Map<String, String>> parse(InputStream is) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {
-        Map<String, Map<String, String>> dataSetMap = new HashMap<String, Map<String, String>>();
-
+        
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newDefaultInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document doc = documentBuilder.parse(is);
 
-        XPath xPath = XPathFactory.newInstance().newXPath();
+       return parse(doc);
+    }
+    
+    public Map<String, Map<String, String>> parse(XmlDocument doc) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {        
+       return parse(doc.getDocument());
+    }
+    
+    public Map<String, Map<String, String>> parse(Document doc) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {
+    	Map<String, Map<String, String>> dataSetMap = new HashMap<String, Map<String, String>>();
+    	
+    	XPath xPath = XPathFactory.newInstance().newXPath();
 
-        for (Element e : getElements()){
-            String data =  xPath.compile(e.getXpath()).evaluate(doc);
-            for(TableColumn tableColumn : e.getTableColumns()) {
-                set(dataSetMap, tableColumn, data);
-            }
-        }
+         for (Element e : getElements()){
+             String data =  xPath.compile(e.getXpath()).evaluate(doc);
+             for(TableColumn tableColumn : e.getTableColumns()) {
+                 set(dataSetMap, tableColumn, data);
+             }
+         }
 
-        return dataSetMap;
+         return dataSetMap;
     }
 
     private void set(Map<String, Map<String, String>> dataSetMap, TableColumn tableColumn, String data) {
