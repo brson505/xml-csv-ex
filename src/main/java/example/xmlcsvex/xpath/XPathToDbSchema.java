@@ -31,10 +31,12 @@ public class XPathToDbSchema {
     }
 
 
+    //deprecated
     public Map<String, Map<String, String>> parse(String str) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {
         return parse(new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8)));
     }
 
+    //deprecated
     public Map<String, Map<String, String>> parse(InputStream is) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {
         
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newDefaultInstance();
@@ -44,10 +46,12 @@ public class XPathToDbSchema {
        return parse(doc);
     }
     
+    //deprecated
     public Map<String, Map<String, String>> parse(XmlDocument doc) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {        
        return parse(doc.getDocument());
     }
     
+    //deprecated
     public Map<String, Map<String, String>> parse(Document doc) throws ParserConfigurationException, XPathExpressionException, IOException, SAXException {
     	Map<String, Map<String, String>> dataSetMap = new HashMap<String, Map<String, String>>();
     	
@@ -63,6 +67,7 @@ public class XPathToDbSchema {
          return dataSetMap;
     }
 
+    //deprecated
     private void set(Map<String, Map<String, String>> dataSetMap, TableColumn tableColumn, String data) {
         Map<String, String> dataSet = dataSetMap.get(tableColumn.getTable());
         if(dataSet == null){
